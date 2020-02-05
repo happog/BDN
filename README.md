@@ -1,7 +1,37 @@
 # Box_Discretization_Network
 This repository is built on the **pytorch [[maskrcnn_benchmark]](https://github.com/facebookresearch/maskrcnn-benchmark)**. The method is the foundation of our ReCTs-competition method [[link]](https://rrc.cvc.uab.es/?ch=12), which won the **championship**.
 
-* This code currently only supports quadrilateral bounding box detection. The method can now be well generated to the curved text detection, which will also be released in this repository in the future.
+PPT link [[Google Drive]](https://drive.google.com/file/d/1xgVx04RNbCbe6f1vCi-ccSqt0Ig07VaK/view?usp=sharing)[[Baidu Cloud]](https://pan.baidu.com/s/1g_uzMaag1w2LOm1Q_Cgk0g)
+
+Generate your own **JSON**: [[Google Drive]](https://drive.google.com/file/d/1Rfv1pxDpoFGSqvzxJZCmGfpKhUe8P3Bk/view?usp=sharing)[[Baidu Cloud]](https://pan.baidu.com/s/1eEcczeNP9z5HzmxylkxCmw)
+
+Brief introduction (in Chinese): [[Google Drive]](https://drive.google.com/file/d/1ED4TCXUFqV0fzBX4Cj29B6ndy1dqm1y-/view?usp=sharing)[[Baidu Cloud]](https://pan.baidu.com/s/1i0qngj3L3_Ezygp5KEXDCA&shfl=sharepset)
+
+# Competition related
+Competition model and config files (it needs a lot of video memory):
+* Paper [[Link]](https://arxiv.org/pdf/1912.09629.pdf) (Exploring the Capacity of Sequential-free Box Discretization Networkfor Omnidirectional Scene Text Detection)
+* Config file [[BaiduYun Link]](https://pan.baidu.com/s/1yKiyFGIQlooc_jGkMECREA). Models below all use this config file except directory. Results below are the multi-scale ensemble results. The very details are described in our updated paper.
+
+* MLT 2017 Model [[BaiduYun Link]](https://pan.baidu.com/s/10p6ka_fYdACAdnlOHZcUSw). 
+
+| MLT 2017 | Recall  | Precision  | Hmean  |
+|:--------:  | :-----:   | :----:      |  :-----:     | 
+| new | 76.44 | 82.75 | 79.47 |
+
+* ReCTS 2019 model [[BaiduYun Link]](https://pan.baidu.com/s/1UaaOd-ByDaqbpVPFlQxw_w)
+
+| ReCTS Detection | Recall  | Precision  | Hmean  |
+|:--------:  | :-----:   | :----:      |  :-----:     | 
+| new | 93.97 | 92.76 | 93.36 |
+
+* HRSC_2016 model [[BaiduYun Link]](https://pan.baidu.com/s/16zEMmRAjrWKtQdDo00rLYw).
+
+| HRSC_2016 | Recall  | Precision  | Hmean  | [TIoU-Hmean](https://github.com/Yuliang-Liu/TIoU-metric) | AP |
+|:--------:  | :-----:   | :----:      |  :-----: | :-----: | :-----: | 
+| IJCAI version | 94.8 | 46.0 | 61.96 | 51.1 | **93.7** |
+| new | 94.1 | 83.8 | **88.65** | **73.3** | 89.22 |
+
+* Online demo is updating (the old demo version used a wrong configuration). This demo uses the MLT model provided above. It can detect multi-lingual text but can only recognize English, Chinese, and most of the symbols. 
 
 # Description
 **Please see our paper at [[link]](https://arxiv.org/abs/1906.02371)**. <div align=center><img src="demo/kehead.png" width="50%" ></div>
@@ -13,6 +43,7 @@ The advantages:
 |    |  Textboxes++ [[code]](https://github.com/MhLiao/TextBoxes_plusplus)  |  East [[code]](https://github.com/argman/EAST)  |   CTD [[code]](https://github.com/Yuliang-Liu/Curve-Text-Detector)     |    Ours   | 
 |:--------:  | :-----:   | :----:      |  :-----:     | :-----: |
 | Variances (Hmean)| ↓ 9.7% | ↓ 13.7% | ↓ 24.6% | ↑ 0.3%|
+
 
 # Getting Started
 
@@ -40,11 +71,14 @@ git clone https://github.com/Yuliang-Liu/Box_Discretization_Network.git
 cd Box_Discretization_Network
 python setup.py build develop
 ```
+* **MUST USE torchvision=0.2**
 
 ## Pretrained model：
 
 [[Link]](https://drive.google.com/file/d/1pBQ53ZNvsdu8byFKDST-de30X5pEFI7C/view?usp=sharing)
 unzip under project_root
+
+（This is ONLY an ImageNet Model With a few iterations on ic15 training data for a stable initialization）
 
 ## ic15 data
 
